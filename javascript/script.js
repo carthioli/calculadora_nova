@@ -1,5 +1,12 @@
-function numero(){
-  alert('numero')
+primeirovalor = 0
+segundovalor  = 0
+result = 0
+
+function resultado(){
+
+}
+function numero(clicked_id){
+  alert(clicked_id)
 }
 function multiplicar(){
   alert('multiplicar')
