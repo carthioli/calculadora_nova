@@ -10,7 +10,7 @@ fieldset{
 }
 
 /*VISOR RESULTADO*/
-.resultado{
+#resultado{
   margin: auto;
   width: 150px;
   padding: 10px;
@@ -19,12 +19,14 @@ fieldset{
   margin-bottom: 15px;
   margin-top: 5px;
 }
+/*BOTÕES OPERADORES*/
 .btnoperador{
   padding: 5px;
   height: 40px;
   width: 40px;
   margin: 3px;
 }
+/*BOTÕES NUMEROS*/
 .btnnumero{
   padding: 5px;
   height: 40px;
