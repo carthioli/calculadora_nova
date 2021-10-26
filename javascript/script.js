@@ -1,7 +1,8 @@
 primeirovalor = 0
 segundovalor  = 0
 result = 0
-div = 0
+operacao = false
+
 
 
 function resultado(){
@@ -14,27 +15,36 @@ function numero(clicked_id){
   num = clicked_id
   div = document.getElementById("resultado")
   div.innerHTML += num
-  
+
+    
+     
+    
+  console.log(num)
+  console.log(segundovalor)
 }
 function multiplicar(clicked_id){
-  multiplica = clicked_id
+  
   div = document.getElementById("resultado")
-  div.innerHTML += multiplica
+  div.innerHTML += clicked_id
+  
+  
 }
 function somar(clicked_id){
-  soma = clicked_id
+
   div = document.getElementById("resultado")
-  div.innerHTML += soma
+  div.innerHTML += clicked_id
 }
 function dividir(clicked_id){
-  divide = clicked_id
+  
   div = document.getElementById("resultado")
-  div.innerHTML += divide
+  div.innerHTML += clicked_id
+
+  
 }
 function subtrair(clicked_id){
-  subtrai = clicked_id
+  
   div = document.getElementById("resultado")
-  div.innerHTML += subtrai
+  div.innerHTML += clicked_id
 }
 function igual(){
   this.resultado()
