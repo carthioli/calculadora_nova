@@ -9,7 +9,7 @@ function resultado(clicked_id){
   div = document.getElementById("resultado")
  
   
-  this.multiplicar(clicked_id)
+  this.dividir(clicked_id)
   div.innerHTML = result
   console.log(result)
 }
@@ -33,9 +33,7 @@ function multiplicar(clicked_id){
   
   div = document.getElementById("resultado")
   div.innerHTML += clicked_id
-
   operacao = true
-
   result = primeirovalor * segundovalor
 
   console.log(operacao)
@@ -46,12 +44,15 @@ function somar(clicked_id){
   div = document.getElementById("resultado")
   div.innerHTML += clicked_id
   operacao = true
+  result = parseFloat(primeirovalor) + parseFloat(segundovalor)
+
 }
 function dividir(clicked_id){
   
   div = document.getElementById("resultado")
   div.innerHTML += clicked_id
   operacao = true
+  result = primeirovalor / segundovalor
   
 }
 function subtrair(clicked_id){
@@ -59,6 +60,7 @@ function subtrair(clicked_id){
   div = document.getElementById("resultado")
   div.innerHTML += clicked_id
   operacao = true
+  result = primeirovalor - segundovalor
 
 }
 function igual(){
