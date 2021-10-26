@@ -8,31 +8,28 @@
   <title>Calculadora</title>
 </head>
 <body>
-    <fieldset>
-      <legend>CALCULADORA</legend>
-        <div id="resultado">
-        </div>
+  <fieldset>
+    <legend>CALCULADORA</legend>
+      <div id="resultado">
+      </div>
 
-        
-        
-        
         <input type="button" id="9" class="btnnumero" onclick="numero(this.id)" value="9"/>
         <input type="button" id="8" class="btnnumero" onclick="numero(this.id)" value="8"/>
         <input type="button" id="7" class="btnnumero" onclick="numero(this.id)" value="7"/>   
-        <input type="button" id="+" class="btnoperador" onclick="somar(this.id)" value="+"/><br/>
+        <input type="button" id="+" class="btnsoma" onclick="somar(this.id)" value="+"/><br/>
         <input type="button" id="6" class="btnnumero" onclick="numero(this.id)" value="6"/>
         <input type="button" id="5" class="btnnumero" onclick="numero(this.id)" value="5"/>
         <input type="button" id="4" class="btnnumero" onclick="numero(this.id)" value="4"/>
-        <input type="button" id="-" class="btnoperador" onclick="subtrair(this.id)" value="-"/><br/>
+        <input type="button" id="-" class="btnsubtrai" onclick="subtrair(this.id)" value="-"/><br/>
         <input type="button" id="3" class="btnnumero" onclick="numero(this.id)" value="3"/>
         <input type="button" id="2" class="btnnumero" onclick="numero(this.id)" value="2"/>
         <input type="button" id="1" class="btnnumero" onclick="numero(this.id)" value="1"/>     
-        <input type="button" id="*" class="btnoperador" onclick="multiplicar(this.id)" value="&times"/><br/>
+        <input type="button" id="*" class="btnmulti" onclick="multiplicar(this.id)" value="&times"/><br/>
         <input type="button" id="0" class="btnnumero" onclick="numero(this.id)" value="0"/>
-        <input type="button" id="=" class="btnoperador" onclick="igual()" value="="/>  
-        <input type="button" id="C" class="btnoperador" onclick="limpar(this.id)" value="C"/>
-        <input type="button" name="dividi" id="/" class="btnoperador" onclick="dividir(this.id)" value="&divide"/><br/>
-    </fieldset>
+        <input type="button" id="=" class="btnfuncao" onclick="igual()" value="="/>  
+        <input type="button" id="C" class="btnfuncao" onclick="limpar(this.id)" value="C"/>
+        <input type="button" id="/" class="btndivide" onclick="dividir(this.id)" value="&divide"/><br/>
+  </fieldset>
 
 </body>
 </html>

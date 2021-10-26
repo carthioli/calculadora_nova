@@ -2,14 +2,15 @@ primeirovalor = ""
 segundovalor  = ""
 
 operacao = false
-console.log(operacao)
 
 
 function resultado(clicked_id){
   div = document.getElementById("resultado")
  
+  soma = document.getElementsByClassName("btnoperador")
   
-  this.dividir(clicked_id)
+  
+  this.multiplicar(clicked_id)
   div.innerHTML = result
   console.log(result)
 }
@@ -25,19 +26,16 @@ function numero(clicked_id){
     primeirovalor += num
   }
     
-  console.log(num)
-  console.log(primeirovalor)
-  console.log(segundovalor)
 }
 function multiplicar(clicked_id){
   
   div = document.getElementById("resultado")
   div.innerHTML += clicked_id
   operacao = true
+  multi = document.getElementsByClassName("btnsoma")
   result = primeirovalor * segundovalor
 
-  console.log(operacao)
-  
+  console.log(multi)
 }
 function somar(clicked_id){
 
@@ -54,6 +52,8 @@ function dividir(clicked_id){
   operacao = true
   result = primeirovalor / segundovalor
   
+  
+  
 }
 function subtrair(clicked_id){
   
@@ -65,7 +65,6 @@ function subtrair(clicked_id){
 }
 function igual(){
   this.resultado()
-  
   
 }
 function limpar(){

@@ -26,6 +26,12 @@ fieldset{
   width: 40px;
   margin: 3px;
 }
+.btnfuncao{
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+  margin: 3px;
+}
 /*BOTÕES NUMEROS*/
 .btnnumero{
   padding: 5px;
