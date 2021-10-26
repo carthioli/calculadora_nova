@@ -41,10 +41,10 @@ function resultado(clicked_id){
     dividi = false
     primeirovalor = result
     segundovalor = ""
-    if ( num == 0 ){
+    if ( primeirovalor == 0 || segundovalor == 0 ){
       alert('Não pode ser divido por zero na base zero')
       div.innerHTML = ""
-      num = ""
+      num = "" 
     }
   } 
   else {
@@ -137,10 +137,10 @@ function subtrair(clicked_id){
   operacao = true
   subtrai = true
   }
-  result = primeirovalor - segundovalor
+  
 
   if ( segundovalor != "" ){
-    
+    result = primeirovalor - segundovalor
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
