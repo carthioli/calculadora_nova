@@ -1,8 +1,8 @@
-primeirovalor = 0
-segundovalor  = 0
+primeirovalor = ""
+segundovalor  = ""
 result = 0
 operacao = false
-
+console.log(operacao)
 
 
 function resultado(){
@@ -16,17 +16,24 @@ function numero(clicked_id){
   div = document.getElementById("resultado")
   div.innerHTML += num
 
-    
-     
+  if ( operacao == true ){
+    segundovalor += num  
+  }
+  else{
+    primeirovalor += num
+  }
     
   console.log(num)
+  console.log(primeirovalor)
   console.log(segundovalor)
 }
 function multiplicar(clicked_id){
   
   div = document.getElementById("resultado")
   div.innerHTML += clicked_id
-  
+
+  operacao = true
+  console.log(operacao)
   
 }
 function somar(clicked_id){
@@ -52,9 +59,4 @@ function igual(){
 function limpar(){
   div.innerHTML = null
 }
-function virgula(){
-  
-}
-function negativo(){
-  
-}
+
