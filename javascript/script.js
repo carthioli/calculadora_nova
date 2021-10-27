@@ -2,11 +2,17 @@ primeirovalor = ""
 segundovalor  = ""
 
 operacao = false
-
+/*OPERADORES*/
  soma = false
  multi = false
  dividi = false
  subtrai = false
+/*VERIFICAÇÃO HISTORICO*/
+ hsoma = ""
+ hmulti = ""
+ hdividi = ""
+ hsubtrai = ""
+
 
 function resultado(clicked_id){
   div = document.getElementById("resultado")
@@ -49,7 +55,7 @@ function numero(clicked_id){
   div = document.getElementById("resultado")
   div.innerHTML += num
   if ( operacao == true ){
-    segundovalor += num 
+    segundovalor += num
   }
   else{
     primeirovalor += num
@@ -72,6 +78,7 @@ function multiplicar(clicked_id){
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
+    this.armazena()
   }
 }
 function somar(clicked_id){
@@ -93,6 +100,7 @@ function somar(clicked_id){
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
+    this.armazena()
   }
 
 }
@@ -124,6 +132,8 @@ function dividir(clicked_id){
      
     }
     segundovalor = ""
+    this.armazena()
+    
   }
   if ( primeirovalor == 0 ) {
     
@@ -147,7 +157,7 @@ function subtrair(clicked_id){
   if ( operacao == true ) {
     subtrai = false
     this.resultado()
-    div.innerHTML += clicked_id 
+   div.innerHTML += clicked_id 
     subtrai = true
   }
   result = primeirovalor - segundovalor
@@ -156,6 +166,7 @@ function subtrair(clicked_id){
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
+    this.armazena()
   }
 }
 function igual(){
@@ -166,4 +177,22 @@ function limpar(){
   operacao = false
   primeirovalor = ""
   segundovalor = ""
+}
+function armazena(){
+  historico = document.getElementById("historico")
+  historico.innerHTML += result + "<br>"
+  
+  /*if ( soma == true ) {
+    hsoma = "+"
+  }
+  if ( multi == true ) {
+    hmulti = "&times"
+  }
+  if ( subtrai == true ) {
+    hsubtrai = "-"
+  }
+  if ( dividi == true) {
+    hdividi = "&divide"
+  }
+  console.log(hsoma)*/
 }
