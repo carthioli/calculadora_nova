@@ -55,11 +55,11 @@ function numero(clicked_id){
   div.innerHTML += num
   if ( operacao == true ){
     segundovalor += num
-    this.armazena()
+    
   }
   else{
     primeirovalor += num
-    this.armazena()
+    
   } 
 }
 /*REALIZA OPERAÇÃO MULTIPLICAR*/
@@ -67,7 +67,7 @@ function multiplicar(clicked_id){
   div = document.getElementById("resultado") 
   operacao = true
   multi = true
-  this.armazena()
+  
   if ( operacao == true ) {
     multi = false 
     this.resultado()
@@ -79,12 +79,12 @@ function multiplicar(clicked_id){
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
-    this.armazena()
+    
   }
 }
 /*REALIZA OPERAÇÃO SOMAR*/
 function somar(clicked_id){
-  this.armazena()
+  
   div = document.getElementById("resultado")
   operacao = true
   soma = true
@@ -101,7 +101,7 @@ function somar(clicked_id){
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
-    this.armazena()
+    
   }
 }
 /*REALIZA OPERAÇÃO DIVIDIR*/
@@ -131,7 +131,7 @@ function dividir(clicked_id){
       alert("Não há divisão em base zero!") 
     }
   segundovalor = ""
-  this.armazena()
+  
   }
   if ( primeirovalor == 0 ) { 
     dividi = false
@@ -144,7 +144,7 @@ function subtrair(clicked_id){
   div = document.getElementById("resultado")
   operacao = true
   subtrai = true
-  this.armazena()
+  
   if ( operacao == true ) {
     subtrai = false
     this.resultado()
@@ -156,7 +156,7 @@ function subtrair(clicked_id){
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
-    this.armazena()
+    
   }
 }
 /*CHAMA O RESLTADO*/
@@ -169,49 +169,4 @@ function limpar(){
   operacao = false
   primeirovalor = ""
   segundovalor = ""
-  historico.innerHTML = ""
-  hprimeirovalor = ""
-  hsegundovalor = ""
-  hresult = ""
-}
-/*ARMAZENA O HISTÓRICO*/
-function armazena(){
-  historico = document.getElementById("historico")
-  if ( soma == true ) {
-    resultope = "+"
-  }
-  if ( multi == true ) {
-    resultope = "&times"
-  }
-  if ( subtrai == true ) {
-    resultope = "-"
-  }
-  if ( dividi == true) {
-    resultope = "&divide"
-  }
-  if ( operacao == true ){
-    hsegundovalor  = num
-  }
- else {
-    hprimeirovalor = num
-  } 
-  if ( result != "" ) {
-  historico.innerHTML = result + "<br>"
-  }
-  /*
-  hresult = result
-  historico.innerHTML = hprimeirovalor + "    " + "    " +  resultope + "    " + hsegundovalor + "<br>"
-  if ( result != "" ) {
-    historico.innerHTML += hprimeirovalor + "    " + "    " + resultope + "    " + hsegundovalor + "  =  " + hresult + "<br>"
-    resultope = ""
-    hprimeirovalor = result
-    hsegundovalor = ""
-    
-  }*/
-  
-    
-  console.log(hprimeirovalor)
-  console.log(hsegundovalor)
-  
-  console.log(resultope)
 }
