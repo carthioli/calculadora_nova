@@ -3,7 +3,6 @@ segundovalor  = ""
 
 operacao = false
 
-
  soma = false
  multi = false
  dividi = false
@@ -18,8 +17,8 @@ function resultado(clicked_id){
 
     this.multiplicar(clicked_id)
     div.innerHTML = result
-    multi = false
     
+    multi = false
     primeirovalor = result
     segundovalor = ""
  
@@ -41,11 +40,6 @@ function resultado(clicked_id){
     dividi = false
     primeirovalor = result
     segundovalor = ""
-    if ( primeirovalor == 0 || segundovalor == 0 ){
-      alert('Não pode ser divido por zero na base zero')
-      div.innerHTML = ""
-      num = "" 
-    }
   } 
   else {
     if ( subtrai == true ) {
@@ -66,7 +60,8 @@ function numero(clicked_id){
   div.innerHTML += num
 
   if ( operacao == true ){
-    segundovalor += num  
+    segundovalor += num 
+     
   }
   else{
     primeirovalor += num
@@ -77,13 +72,22 @@ function numero(clicked_id){
 function multiplicar(clicked_id){
   
   div = document.getElementById("resultado")
-  if ( operacao == false ) {
-  div.innerHTML += clicked_id
+ 
+  
   operacao = true
   multi = true
+  
+  if ( operacao == true ) {
+    multi = false
+    
+    this.resultado()
+    
+    div.innerHTML += clicked_id 
+    multi = true
+    
   }
+  
   result = primeirovalor * segundovalor
-
   if ( segundovalor != "" ){
     
     div.innerHTML = result + clicked_id
@@ -91,14 +95,23 @@ function multiplicar(clicked_id){
     segundovalor = ""
   }
   
+  
 }
 function somar(clicked_id){
 
   div = document.getElementById("resultado")
-  if ( operacao == false ) {
-  div.innerHTML += clicked_id
+  
   operacao = true
   soma = true
+  
+  if ( operacao == true ) {
+    soma = false
+    
+    this.resultado()
+    
+    div.innerHTML += clicked_id 
+    soma = true
+    
   }
   
   result = parseFloat(primeirovalor) + parseFloat(segundovalor)
@@ -114,11 +127,20 @@ function somar(clicked_id){
 function dividir(clicked_id){
   
   div = document.getElementById("resultado")
-  if ( operacao == false ) {
-  div.innerHTML += clicked_id
+
   operacao = true
   dividi = true
+  
+  if ( operacao == true ) {
+    dividi = false
+    
+    this.resultado()
+    
+    div.innerHTML += clicked_id 
+    dividi = true
+    
   }
+
   result = primeirovalor / segundovalor
 
   if ( segundovalor != "" ){
@@ -132,15 +154,23 @@ function dividir(clicked_id){
 function subtrair(clicked_id){
   
   div = document.getElementById("resultado")
-  if ( operacao == false ) {
-  div.innerHTML += clicked_id
+  
   operacao = true
   subtrai = true
+
+  if ( operacao == true ) {
+    subtrai = false
+    
+    this.resultado()
+    
+    div.innerHTML += clicked_id 
+    subtrai = true
+    
   }
-  
+  result = primeirovalor - segundovalor
 
   if ( segundovalor != "" ){
-    result = primeirovalor - segundovalor
+    
     div.innerHTML = result + clicked_id
     primeirovalor = result
     segundovalor = ""
