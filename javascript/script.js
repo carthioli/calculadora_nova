@@ -13,6 +13,7 @@ operacao = false
  hdividi = ""
  hsubtrai = ""
 
+ 
 
 function resultado(clicked_id){
   div = document.getElementById("resultado")
@@ -177,10 +178,10 @@ function limpar(){
   operacao = false
   primeirovalor = ""
   segundovalor = ""
+  historico.innerHTML = null
 }
 function armazena(){
   historico = document.getElementById("historico")
-  historico.innerHTML += result + "<br>"
   
   /*if ( soma == true ) {
     hsoma = "+"
@@ -195,4 +196,6 @@ function armazena(){
     hdividi = "&divide"
   }
   console.log(hsoma)*/
+
+  historico.innerHTML += result + "<br>"
 }
