@@ -1,19 +1,20 @@
+/*ARMAZENA OS VALORES*/
+result = ""
 primeirovalor = ""
 segundovalor  = ""
-
+/*VERICA ESTADO DA OPERAÇÃO*/
 operacao = false
 /*OPERADORES*/
- soma = false
- multi = false
- dividi = false
- subtrai = false
-/*VERIFICAÇÃO HISTORICO*/
- hsoma = ""
- hmulti = ""
- hdividi = ""
- hsubtrai = ""
-
- 
+soma = false
+multi = false
+dividi = false
+subtrai = false
+/*HISTORICO*/
+hresult = ""
+hprimeirovalor = ""
+hsegundovalor  = ""
+/*VERIFICAÇÃO DA OPERAÇÃO HISTORICO*/
+resultope = ""
 
 function resultado(clicked_id){
   div = document.getElementById("resultado")
@@ -53,8 +54,10 @@ function resultado(clicked_id){
 }
 function numero(clicked_id){
   num = clicked_id
+  this.armazena()
   div = document.getElementById("resultado")
   div.innerHTML += num
+  
   if ( operacao == true ){
     segundovalor += num
   }
@@ -183,6 +186,16 @@ function limpar(){
 function armazena(){
   historico = document.getElementById("historico")
   
+  if ( operacao == false ) {
+    hprimeirovalor = num
+  }
+
+  if ( operacao == true ){
+    hsegundovalor = num
+  }
+  
+  console.log(hprimeirovalor)
+  console.log(hsegundovalor)
   /*if ( soma == true ) {
     hsoma = "+"
   }
@@ -195,7 +208,9 @@ function armazena(){
   if ( dividi == true) {
     hdividi = "&divide"
   }
-  console.log(hsoma)*/
-
-  historico.innerHTML += result + "<br>"
+  console.log(hsoma)
+*/
+  
+  historico.innerHTML = hprimeirovalor + hsegundovalor + result + "<br>"
+ 
 }
