@@ -3,7 +3,7 @@
 }
 fieldset{
   width: 200px;
-  height: 250px;
+  height: 280px;
   text-align: center;
   margin-top: 15px;
   margin:auto;
@@ -14,7 +14,7 @@ fieldset{
   margin: auto;
   width: 150px;
   padding: 10px;
-  height: 10px;
+  height: 30px;
   border: 1px solid;
   margin-bottom: 15px;
   margin-top: 5px;
