@@ -36,7 +36,8 @@ function numero(clicked_id){
   console.log(primeirovalor)
   console.log(segundovalor)
   console.log(soma)
-  console.log(multi)
+  console.log(subtrai)
+  console.log(result)
 }
 /*REALIZA SOMA E FAZ VERIFICAÇÕES*/
 function somar(clicked_id) {
@@ -62,6 +63,10 @@ function somar(clicked_id) {
   }
   /*REALIZA A CONTA*/
   if ( segundovalor != "" ){
+    if ( subtrai == true ){
+      soma = false
+      result = primeirovalor - segundovalor
+    }
     result = Number(primeirovalor) + Number(segundovalor)
     primeirovalor = result
     segundovalor = ""
@@ -149,6 +154,7 @@ function dividir(clicked_id){
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
       }else{
+         
         divresult.innerHTML = primeirovalor + clicked_id
       } 
     }
@@ -186,22 +192,21 @@ function resultado(clicked_id){
     this.somar(clicked_id)
     
     divresult.innerHTML = result  
-    operacao = false
-    soma = false
+    
   }
   if ( multi == true){
     this.multiplicar(clicked_id)
-    operacao = false
+    
     divresult.innerHTML = result  
   }
   if ( subtrai == true){
     this.subtrair(clicked_id)
-    operacao = false
+    
     divresult.innerHTML = result  
   }
   if ( dividi == true){
     this.dividir(clicked_id)
-    operacao = false
+    
     divresult.innerHTML = result  
   }
 }
@@ -257,13 +262,13 @@ function armazena(){
   if ( result != "" ) {
   historico.innerHTML += result + "<br>"
   }
-  /*
+  
   hresult = result
-  historico.innerHTML = hprimeirovalor + "    " + "    " +  resultope + "    " + hsegundovalor + "<br>"
+  historico.innerHTML = hprimeirovalor + "    " + "    " +  hoperacao + "    " + hsegundovalor + "<br>"
   if ( result != "" ) {
-    historico.innerHTML += hprimeirovalor + "    " + "    " + resultope + "    " + hsegundovalor + "  =  " + hresult + "<br>"
-    resultope = ""
+    historico.innerHTML += hprimeirovalor + "    " + "    " + hoperacao + "    " + hsegundovalor + "  =  " + hresult + "<br>"
+    hoperacao = ""
     hprimeirovalor = result
     hsegundovalor = ""
-   */ 
+  }
   }
