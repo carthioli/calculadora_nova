@@ -137,6 +137,25 @@ function dividir(clicked_id){
       } 
     }
   }
+  /*VERIFICA SE A DIVISÃO É POR 0*/
+  if ( primeirovalor == 0 ){
+    alert('Não há divisão por zero')
+    primeirovalor = ""
+    segundovalor = ""
+    result = ""
+    divresult.innerHTML = ""
+    operacao = false
+    dividi = false
+  }
+  if ( segundovalor != "" && segundovalor == 0 ){
+    alert('Não há divisão por zero')
+    primeirovalor = ""
+    segundovalor = ""
+    result = ""
+    divresult.innerHTML = ""
+    operacao = false
+    dividi = false
+  }
   /*REALIZA A CONTA*/
   if ( segundovalor != "" ){
     result = Number(primeirovalor) / Number(segundovalor)
