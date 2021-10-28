@@ -49,6 +49,10 @@ function somar(clicked_id) {
       operacao = true
       soma = true 
   }else{
+      subtrai = false
+      dividi = false
+      multi = false
+      soma = true
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
       }else{
@@ -63,6 +67,7 @@ function somar(clicked_id) {
     segundovalor = ""
     
     divresult.innerHTML = result + clicked_id 
+
   }  
 }
 /*REALIZA MULTIPLICAÇÃO E FAZ VERIFICAÇÕES*/
@@ -76,6 +81,10 @@ function multiplicar(clicked_id){
       multi = true 
       
   }else{
+      subtrai = false
+      dividi = false
+      soma = false
+      multi = true
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
       }else{
@@ -103,6 +112,10 @@ function subtrair(clicked_id){
       operacao = true
       subtrai = true 
   }else{
+      dividi = false
+      soma = false
+      multi = false
+      subtrai = true 
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
       }else{
@@ -129,6 +142,10 @@ function dividir(clicked_id){
       operacao = true
       dividi = true 
   }else{
+      soma = false
+      multi = false
+      subtrai = false
+      dividi = true
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
       }else{
@@ -211,6 +228,13 @@ function limpar(){
 function armazena(clicked_id){
 
   divhistorico = document.getElementById("historico")
+  
+  divhistorico.innerHTML += result + "<br/>"
+  console.log(hresult)
+}
+/*ARMAZENA O HISTÓRICO*/
+function armazena(){
+  historico = document.getElementById("historico")
   if ( segundovalor != "" ) {
     hsegundovalor = num
   } else {
@@ -230,6 +254,16 @@ function armazena(clicked_id){
   if ( dividi == true) {
     hoperacao = "&divide"
   }
-  divhistorico.innerHTML += result + "<br/>"
-  console.log(hresult)
-}
+  if ( result != "" ) {
+  historico.innerHTML += result + "<br>"
+  }
+  /*
+  hresult = result
+  historico.innerHTML = hprimeirovalor + "    " + "    " +  resultope + "    " + hsegundovalor + "<br>"
+  if ( result != "" ) {
+    historico.innerHTML += hprimeirovalor + "    " + "    " + resultope + "    " + hsegundovalor + "  =  " + hresult + "<br>"
+    resultope = ""
+    hprimeirovalor = result
+    hsegundovalor = ""
+   */ 
+  }
