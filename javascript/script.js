@@ -1,12 +1,15 @@
+divresult= ""
 /*ARMAZENA VALORES HISTORICO*/
 hprimeirovalor = ""
 hsegundovalor  = ""
+divhistorico = ""
 hoperacao = ""
 hresult = ""
 /*ARMAZENA VALORES E RESULTADO*/
 primeirovalor = ""
 segundovalor  = ""
 result = ""
+num = ""
 /*STATUS DA OPERAÇÃO*/
 operacao = false
 /*VERIFICA A OPERAÇÃO*/
@@ -22,11 +25,11 @@ function numero(clicked_id){
 
   if ( operacao == false) {
     primeirovalor += num
-    this.armazena()
+    
   }
   else{
     segundovalor += num
-    this.armazena()
+    
   }
   console.log(num)
   console.log(operacao)
@@ -45,7 +48,6 @@ function somar(clicked_id) {
       divresult.innerHTML += clicked_id 
       operacao = true
       soma = true 
-      this.armazena()
   }else{
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
@@ -61,12 +63,7 @@ function somar(clicked_id) {
     segundovalor = ""
     
     divresult.innerHTML = result + clicked_id 
-  }
-  if ( result != "" ){
-    
-  }
-  
-  
+  }  
 }
 /*REALIZA MULTIPLICAÇÃO E FAZ VERIFICAÇÕES*/
 function multiplicar(clicked_id){
@@ -77,7 +74,7 @@ function multiplicar(clicked_id){
       divresult.innerHTML += clicked_id 
       operacao = true
       multi = true 
-      this.armazena()
+      
   }else{
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
@@ -105,7 +102,6 @@ function subtrair(clicked_id){
       
       operacao = true
       subtrai = true 
-      this.armazena()
   }else{
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
@@ -132,7 +128,6 @@ function dividir(clicked_id){
       divresult.innerHTML += clicked_id 
       operacao = true
       dividi = true 
-      this.armazena()
   }else{
       if ( segundovalor != "" ) {
         divresult.innerHTML = result + clicked_id
@@ -142,6 +137,24 @@ function dividir(clicked_id){
     }
   }
   /*REALIZA A CONTA*/
+  if ( primeirovalor == 0 ){
+    alert('Não há divisão por zero')
+    primeirovalor = ""
+    segundovalor = ""
+    result = ""
+    divresult.innerHTML = ""
+    operacao = false
+    dividi = false
+  }
+  if ( segundovalor != "" && segundovalor == 0 ){
+    alert('Não há divisão por zero')
+    primeirovalor = ""
+    segundovalor = ""
+    result = ""
+    divresult.innerHTML = ""
+    operacao = false
+    dividi = false
+  }
   if ( segundovalor != "" ){
     result = Number(primeirovalor) / Number(segundovalor)
     primeirovalor = result
@@ -187,11 +200,12 @@ function igual(){
 }
 /*ZERA AS OPERAÇÕES*/ 
 function limpar(){
+  result = ""
   operacao = false
   primeirovalor = ""
-  segundovalor = ""
+  segundovalor  = ""
   divresult.innerHTML = ""
-  result = ""
+  divhistorico.innerHTML = ""  
 }
 /*ARMAZENA E MOSTRA O HISTORICO*/
 function armazena(clicked_id){
@@ -202,12 +216,8 @@ function armazena(clicked_id){
   } else {
     if ( segundovalor == "" ){
       hprimeirovalor = num
-    } else {
-      if ( result != "" ) {
-        hresult = result
-      }
     }
-  }
+  }  
   if ( soma == true ) {
     hoperacao = "+"
   }
@@ -220,5 +230,6 @@ function armazena(clicked_id){
   if ( dividi == true) {
     hoperacao = "&divide"
   }
-  divhistorico.innerHTML = hprimeirovalor + hoperacao + hsegundovalor + "<br/>"
+  divhistorico.innerHTML += result + "<br/>"
+  console.log(hresult)
 }
