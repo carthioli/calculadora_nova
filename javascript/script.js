@@ -13,10 +13,12 @@ num = ""
 /*STATUS DA OPERAÇÃO*/
 operacao = false
 /*VERIFICA A OPERAÇÃO*/
-soma = false
-multi = false
-dividi = false
-subtrai = false
+
+  soma = false
+  multi = false
+  dividi = false
+  subtrai = false
+
 /*DETERMINA O NUMERO QUE ESTA ARMAZENANDO*/
 function numero(clicked_id){
   num = clicked_id
@@ -25,11 +27,9 @@ function numero(clicked_id){
 
   if ( operacao == false) {
     primeirovalor += num
-    
   }
   else{
     segundovalor += num
-    
   }
   console.log(num)
   console.log(operacao)
@@ -49,61 +49,104 @@ function somar(clicked_id) {
       divresult.innerHTML += clicked_id 
       operacao = true
       soma = true 
-  }else{
-      subtrai = false
-      dividi = false
-      multi = false
-      soma = true
-      if ( segundovalor != "" ) {
-        divresult.innerHTML = result + clicked_id
+  }else {
+      if ( subtrai == false && multi == false && dividi == false ) {
+        subtrai = false
+        dividi = false
+        multi = false
+        soma = true
+        /*REALIZA A CONTA*/
+        if (soma == true ) {
+          result = Number(primeirovalor) + Number(segundovalor)
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+        }
+      }
+      if (segundovalor != "") {
+        if (subtrai == true && soma == false && multi == false && dividi == false) {
+          result = primeirovalor - segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          subtrai = false
+          soma = true
+        }
+        if (multi == true && soma == false && subtrai == false && dividi == false) {
+          result = primeirovalor * segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          multi = false
+          soma = true
+        }
+        if (dividi == true && soma == false && subtrai == false && multi == false) {
+          result = primeirovalor / segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          dividi = false
+          soma = true
+        }
+      }
+    }
       }else{
         divresult.innerHTML = primeirovalor + clicked_id
       } 
     }
-  }
-  /*REALIZA A CONTA*/
-  if ( segundovalor != "" ){
-    if ( subtrai == true ){
-      soma = false
-      result = primeirovalor - segundovalor
-    }
-    result = Number(primeirovalor) + Number(segundovalor)
-    primeirovalor = result
-    segundovalor = ""
-    
-    divresult.innerHTML = result + clicked_id 
-
-  }  
-}
 /*REALIZA MULTIPLICAÇÃO E FAZ VERIFICAÇÕES*/
 function multiplicar(clicked_id){
+
   divresult = document.getElementById("resultado")
   /*VERFICA SE JÁ EXISTE OUTRA OPERAÇÃO NO VISOR*/
   if ( primeirovalor != "" ) {
     if ( operacao == false ){
-      divresult.innerHTML += clicked_id 
+      divresult.innerHTML += clicked_id
       operacao = true
-      multi = true 
-      
-  }else{
-      subtrai = false
-      dividi = false
-      soma = false
       multi = true
-      if ( segundovalor != "" ) {
-        divresult.innerHTML = result + clicked_id
-      }else{
-        divresult.innerHTML = primeirovalor + clicked_id
-      } 
+    }else {
+      if ( subtrai == false && soma == false && dividi == false ) {
+        subtrai = false
+        dividi = false
+        soma = false
+        multi = true
+        /*REALIZA A CONTA*/
+        if (multi == true ) {
+          result = Number(primeirovalor) * Number(segundovalor)
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+        }
+      }
+      if (segundovalor != "") {
+        if (subtrai == true && soma == false && multi == false && dividi == false) {
+          result = primeirovalor - segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          subtrai = false
+          multi = true
+        }
+        if (soma == true && multi == false && subtrai == false && dividi == false) {
+          result = Number(primeirovalor) + Number(segundovalor)
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          soma = false
+          multi = true
+        }
+        if (dividi == true && soma == false && subtrai == false && multi == false) {
+          result = primeirovalor / segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          dividi = false
+          multi = true
+        }
+      }
     }
-  }
-  /*REALIZA A CONTA*/
-  if ( segundovalor != "" ){
-    result = Number(primeirovalor) * Number(segundovalor)
-    primeirovalor = result
-    segundovalor = ""
-    
-    divresult.innerHTML = result + clicked_id 
+  }else{
+    divresult.innerHTML = primeirovalor + clicked_id
   }
 }
 /*REALIZA SUBTRAÇÃO E FAZ VERIFICAÇÕES*/
@@ -112,30 +155,53 @@ function subtrair(clicked_id){
   /*VERFICA SE JÁ EXISTE OUTRA OPERAÇÃO NO VISOR*/
   if ( primeirovalor != "" ) {
     if ( operacao == false ){
-      divresult.innerHTML += clicked_id 
-      
+      divresult.innerHTML += clicked_id
       operacao = true
-      subtrai = true 
-  }else{
-      dividi = false
-      soma = false
-      multi = false
-      subtrai = true 
-      if ( segundovalor != "" ) {
-        divresult.innerHTML = result + clicked_id
-      }else{
-        divresult.innerHTML = primeirovalor + clicked_id
-      } 
+      subtrai = true
+    }else {
+      if ( multi == false && soma == false && dividi == false ) {
+        multi = false
+        dividi = false
+        soma = false
+        subtrai = true
+        /*REALIZA A CONTA*/
+        if (subtrai == true ) {
+          result = Number(primeirovalor) - Number(segundovalor)
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+        }
+      }
+      if (segundovalor != "") {
+        if (multi == true && soma == false && subtrai == false && dividi == false) {
+          result = primeirovalor * segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          multi = false
+          subtrai = true
+        }
+        if (soma == true && multi == false && subtrai == false && dividi == false) {
+          result = Number(primeirovalor) + Number(segundovalor)
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          soma = false
+          subtrai = true
+        }
+        if (dividi == true && soma == false && subtrai == false && multi == false) {
+          result = primeirovalor / segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          dividi = false
+          subtrai = true
+        }
+      }
     }
+  }else{
+    divresult.innerHTML = primeirovalor + clicked_id
   }
-  /*REALIZA A CONTA*/
-  if ( segundovalor != "" ){
-    result = Number(primeirovalor) - Number(segundovalor)
-    primeirovalor = result
-    segundovalor = ""
-    
-    divresult.innerHTML = result + clicked_id 
-  }  
 } 
 /*REALIZA DIVISÃO E FAZ VERIFICAÇÕES*/
 function dividir(clicked_id){
@@ -143,48 +209,71 @@ function dividir(clicked_id){
   /*VERFICA SE JÁ EXISTE OUTRA OPERAÇÃO NO VISOR*/
   if ( primeirovalor != "" ) {
     if ( operacao == false ){
-      divresult.innerHTML += clicked_id 
+      divresult.innerHTML += clicked_id
       operacao = true
-      dividi = true 
-  }else{
-      soma = false
-      multi = false
-      subtrai = false
       dividi = true
-      if ( segundovalor != "" ) {
-        divresult.innerHTML = result + clicked_id
-      }else{
-         
-        divresult.innerHTML = primeirovalor + clicked_id
-      } 
+    }else {
+      if ( multi == false && soma == false && subtrai == false ) {
+        multi = false
+        subtrai = false
+        soma = false
+        dividi = true
+        /*REALIZA A CONTA*/
+        if ( primeirovalor == 0 ){
+          alert('Não há divisão por zero')
+          primeirovalor = ""
+          segundovalor = ""
+          result = ""
+          divresult.innerHTML = ""
+          operacao = false
+          dividi = false
+        }
+        if ( segundovalor != "" && segundovalor == 0 ){
+          alert('Não há divisão por zero')
+          primeirovalor = ""
+          segundovalor = ""
+          result = ""
+          divresult.innerHTML = ""
+          operacao = false
+          dividi = false
+        }
+        if (dividi == true ) {
+          result = Number(primeirovalor) / Number(segundovalor)
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+        }
+      }
+      if (segundovalor != "") {
+        if (multi == true && soma == false && subtrai == false && dividi == false) {
+          result = primeirovalor * segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          multi = false
+          dividi = true
+        }
+        if (soma == true && multi == false && subtrai == false && dividi == false) {
+          result = Number(primeirovalor) + Number(segundovalor)
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          soma = false
+          dividi = true
+        }
+        if (subtrai == true && soma == false && dividi == false && multi == false) {
+          result = primeirovalor - segundovalor
+          primeirovalor = result
+          segundovalor = ""
+          divresult.innerHTML = result + clicked_id
+          subtrai = false
+          dividi = true
+        }
+      }
     }
+  }else{
+    divresult.innerHTML = primeirovalor + clicked_id
   }
-  /*REALIZA A CONTA*/
-  if ( primeirovalor == 0 ){
-    alert('Não há divisão por zero')
-    primeirovalor = ""
-    segundovalor = ""
-    result = ""
-    divresult.innerHTML = ""
-    operacao = false
-    dividi = false
-  }
-  if ( segundovalor != "" && segundovalor == 0 ){
-    alert('Não há divisão por zero')
-    primeirovalor = ""
-    segundovalor = ""
-    result = ""
-    divresult.innerHTML = ""
-    operacao = false
-    dividi = false
-  }
-  if ( segundovalor != "" ){
-    result = Number(primeirovalor) / Number(segundovalor)
-    primeirovalor = result
-    segundovalor = ""
-    
-    divresult.innerHTML = result + clicked_id 
-  }  
 }
 /*VERIFICA QUAL OPERAÇÃO ESTÁ SENDO REALIZADA*/
 function resultado(clicked_id){
