@@ -1,17 +1,18 @@
+/*MOSTRA VALOR OPERAÇÃO E RESULTADO*/
   divresult= ""
 /*ARMAZENA VALORES HISTORICO*/
-  armazenaprimeiro = ""
-  armazenasegundo = ""
-  hprimeirovalor = ""
-  hsegundovalor  = ""
-  divhistorico = ""
-  hoperacao = ""
   hresult = ""
+  hoperacao = ""
+  divhistorico = ""
+  hsegundovalor  = ""
+  hprimeirovalor = ""
+  armazenaprimeiro = ""
+  armazenasegundo = ""  
 /*ARMAZENA VALORES E RESULTADO*/
+  num = ""
+  result = ""
   primeirovalor = ""
   segundovalor  = ""
-  result = ""
-  num = ""
 /*STATUS DA OPERAÇÃO*/
   operacao = false
 /*VERIFICA A OPERAÇÃO*/
@@ -53,30 +54,40 @@ function somar(clicked_id) {
           armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
         }
       }
       if (segundovalor != "") {
         if (subtrai == true && soma == false && multi == false && dividi == false) {
           result = primeirovalor - segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           subtrai = false
           soma = true
         }
         if (multi == true && soma == false && subtrai == false && dividi == false) {
           result = primeirovalor * segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           multi = false
           soma = true
         }
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           dividi = false
           soma = true
@@ -109,30 +120,40 @@ function multiplicar(clicked_id){
           armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
         }
       }
       if (segundovalor != "") {
         if (subtrai == true && soma == false && multi == false && dividi == false) {
           result = primeirovalor - segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           subtrai = false
           multi = true
         }
         if (soma == true && multi == false && subtrai == false && dividi == false) {
           result = Number(primeirovalor) + Number(segundovalor)
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           soma = false
           multi = true
         }
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           dividi = false
           multi = true
@@ -165,30 +186,40 @@ function subtrair(clicked_id){
           armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
         }
       }
       if (segundovalor != "") {
         if (multi == true && soma == false && subtrai == false && dividi == false) {
           result = primeirovalor * segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           multi = false
           subtrai = true
         }
         if (soma == true && multi == false && subtrai == false && dividi == false) {
           result = Number(primeirovalor) + Number(segundovalor)
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           soma = false
           subtrai = true
         }
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           dividi = false
           subtrai = true
@@ -239,30 +270,40 @@ function dividir(clicked_id){
           armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
         }
       }
       if (segundovalor != "") {
         if (multi == true && soma == false && subtrai == false && dividi == false) {
           result = primeirovalor * segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           multi = false
           dividi = true
         }
         if (soma == true && multi == false && subtrai == false && dividi == false) {
           result = Number(primeirovalor) + Number(segundovalor)
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           soma = false
           dividi = true
         }
         if (subtrai == true && soma == false && dividi == false && multi == false) {
           result = primeirovalor - segundovalor
+          armazenaprimeiro = primeirovalor
+          armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
           subtrai = false
           dividi = true
@@ -295,13 +336,18 @@ function resultado(clicked_id){
 /*CHAMA O RESULTADO E O HISTORICO*/
 function igual(){
   this.resultado()
+  if (armazenaprimeiro != "" && armazenasegundo != "" && hresult != ""){
+    armazenaprimeiro = ""
+    armazenasegundo = ""
+    hresult = ""
+  }else{
   this.armazena()
+  }
   operacao = false
   soma = false
   multi = false
   dividi = false
   subtrai = false
-  
 }
 /*ZERA AS OPERAÇÕES*/ 
 function limpar(){
@@ -315,13 +361,6 @@ function limpar(){
 /*ARMAZENA O HISTÓRICO*/
 function armazena(){
   historico = document.getElementById("historico")
-  if ( segundovalor != "" ) {
-    hsegundovalor = num
-  } else {
-    if ( segundovalor == "" ){
-      hprimeirovalor = num
-    }
-  }  
   if ( soma == true ) {
     hoperacao = "+"
   }
@@ -334,8 +373,8 @@ function armazena(){
   if ( dividi == true) {
     hoperacao = "&divide"
   }
- 
   hresult = result
+    
   if ( result != "" ) {
     historico.innerHTML += armazenaprimeiro + "    " + "    " + hoperacao + "    " + armazenasegundo + "  =  " + hresult + "<br>"
     hoperacao = ""
