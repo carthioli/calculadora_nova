@@ -1,23 +1,26 @@
-divresult= ""
+/**/
+ 
+  divresult= ""
 /*ARMAZENA VALORES HISTORICO*/
-hprimeirovalor = ""
-hsegundovalor  = ""
-divhistorico = ""
-hoperacao = ""
-hresult = ""
+  hprimeirovalor = ""
+  hsegundovalor  = ""
+  divhistorico = ""
+  hoperacao = ""
+  hresult = ""
 /*ARMAZENA VALORES E RESULTADO*/
-primeirovalor = ""
-segundovalor  = ""
-result = ""
-num = ""
+  primeirovalor = ""
+  segundovalor  = ""
+  result = ""
+  num = ""
 /*STATUS DA OPERAÇÃO*/
-operacao = false
+  operacao = false
 /*VERIFICA A OPERAÇÃO*/
-
   soma = false
   multi = false
   dividi = false
   subtrai = false
+/**/
+
 
 /*DETERMINA O NUMERO QUE ESTA ARMAZENANDO*/
 function numero(clicked_id){
@@ -27,9 +30,11 @@ function numero(clicked_id){
 
   if ( operacao == false) {
     primeirovalor += num
+    this.armazena()
   }
   else{
     segundovalor += num
+    this.armazena()
   }
   console.log(num)
   console.log(operacao)
@@ -44,28 +49,33 @@ function somar(clicked_id) {
   
   divresult = document.getElementById("resultado")
   /*VERFICA SE JÁ EXISTE OUTRA OPERAÇÃO NO VISOR*/
+  
   if ( primeirovalor != "" ) {
     if ( operacao == false ){
       divresult.innerHTML += clicked_id 
       operacao = true
+      subtrai = false
+      dividi = false
+      multi = false
       soma = true 
   }else {
-      if ( subtrai == false && multi == false && dividi == false ) {
+  /*REALIZA A CONTA*/
+      if ( soma == true && subtrai == false && multi == false && dividi == false ) {
         subtrai = false
         dividi = false
         multi = false
         soma = true
-        /*REALIZA A CONTA*/
-        if (soma == true ) {
           result = Number(primeirovalor) + Number(segundovalor)
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
+          this.armazena()
           divresult.innerHTML = result + clicked_id
-        }
       }
       if (segundovalor != "") {
         if (subtrai == true && soma == false && multi == false && dividi == false) {
           result = primeirovalor - segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -74,6 +84,7 @@ function somar(clicked_id) {
         }
         if (multi == true && soma == false && subtrai == false && dividi == false) {
           result = primeirovalor * segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -82,6 +93,7 @@ function somar(clicked_id) {
         }
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -105,22 +117,22 @@ function multiplicar(clicked_id){
       operacao = true
       multi = true
     }else {
-      if ( subtrai == false && soma == false && dividi == false ) {
+  /*REALIZA A CONTA*/
+      if ( multi == true && subtrai == false && soma == false && dividi == false ) {
         subtrai = false
         dividi = false
         soma = false
         multi = true
-        /*REALIZA A CONTA*/
-        if (multi == true ) {
-          result = Number(primeirovalor) * Number(segundovalor)
+          result = primeirovalor * segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
-        }
       }
       if (segundovalor != "") {
         if (subtrai == true && soma == false && multi == false && dividi == false) {
           result = primeirovalor - segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -129,6 +141,7 @@ function multiplicar(clicked_id){
         }
         if (soma == true && multi == false && subtrai == false && dividi == false) {
           result = Number(primeirovalor) + Number(segundovalor)
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -137,6 +150,7 @@ function multiplicar(clicked_id){
         }
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -167,6 +181,7 @@ function subtrair(clicked_id){
         /*REALIZA A CONTA*/
         if (subtrai == true ) {
           result = Number(primeirovalor) - Number(segundovalor)
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -175,6 +190,7 @@ function subtrair(clicked_id){
       if (segundovalor != "") {
         if (multi == true && soma == false && subtrai == false && dividi == false) {
           result = primeirovalor * segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -183,6 +199,7 @@ function subtrair(clicked_id){
         }
         if (soma == true && multi == false && subtrai == false && dividi == false) {
           result = Number(primeirovalor) + Number(segundovalor)
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -191,6 +208,7 @@ function subtrair(clicked_id){
         }
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -239,6 +257,7 @@ function dividir(clicked_id){
         }
         if (dividi == true ) {
           result = Number(primeirovalor) / Number(segundovalor)
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -247,6 +266,7 @@ function dividir(clicked_id){
       if (segundovalor != "") {
         if (multi == true && soma == false && subtrai == false && dividi == false) {
           result = primeirovalor * segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -255,6 +275,7 @@ function dividir(clicked_id){
         }
         if (soma == true && multi == false && subtrai == false && dividi == false) {
           result = Number(primeirovalor) + Number(segundovalor)
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -263,6 +284,7 @@ function dividir(clicked_id){
         }
         if (subtrai == true && soma == false && dividi == false && multi == false) {
           result = primeirovalor - segundovalor
+          armazenaprimeiro = primeirovalor
           primeirovalor = result
           segundovalor = ""
           divresult.innerHTML = result + clicked_id
@@ -330,7 +352,7 @@ function armazena(clicked_id){
 function armazena(){
   historico = document.getElementById("historico")
   if ( segundovalor != "" ) {
-    hsegundovalor = num
+    hsegundovalor += num
   } else {
     if ( segundovalor == "" ){
       hprimeirovalor = num
@@ -348,16 +370,17 @@ function armazena(){
   if ( dividi == true) {
     hoperacao = "&divide"
   }
-  if ( result != "" ) {
-  historico.innerHTML += result + "<br>"
-  }
+  
   
   hresult = result
-  historico.innerHTML = hprimeirovalor + "    " + "    " +  hoperacao + "    " + hsegundovalor + "<br>"
   if ( result != "" ) {
-    historico.innerHTML += hprimeirovalor + "    " + "    " + hoperacao + "    " + hsegundovalor + "  =  " + hresult + "<br>"
-    hoperacao = ""
-    hprimeirovalor = result
+    historico.innerHTML += armazenaprimeiro + "    " + "    " + hoperacao + "    " + hsegundovalor + "  =  " + hresult + "<br>"
+    
     hsegundovalor = ""
+    
+    hresult = ""
+    this.limpar() 
+    
   }
-  }
+  
+}
