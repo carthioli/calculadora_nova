@@ -1,9 +1,9 @@
-/*MOSTRA VALOR OPERAÇÃO E RESULTADO*/
+/*MOSTRA VALOR, OPERAÇÃO, RESULTADO E HISTÓRICO*/
   divresult= ""
+  divhistorico = ""
 /*ARMAZENA VALORES HISTORICO*/
   hresult = ""
   hoperacao = ""
-  divhistorico = ""
   hsegundovalor  = ""
   hprimeirovalor = ""
   armazenaprimeiro = ""
@@ -48,7 +48,7 @@ function somar(clicked_id) {
         multi = false
         soma = true
         /*REALIZA A CONTA*/
-        if (soma == true ) {
+        if (soma == true && segundovalor != "" ) {
           result = Number(primeirovalor) + Number(segundovalor)
           armazenaprimeiro = primeirovalor
           armazenasegundo = segundovalor
@@ -81,6 +81,7 @@ function somar(clicked_id) {
           multi = false
           soma = true
         }
+        this.verificazero()
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
           armazenaprimeiro = primeirovalor
@@ -107,15 +108,15 @@ function multiplicar(clicked_id){
       divresult.innerHTML += clicked_id
       operacao = true
       multi = true
-    }else {
+    } else {
       if ( subtrai == false && soma == false && dividi == false ) {
         subtrai = false
         dividi = false
         soma = false
         multi = true
         /*REALIZA A CONTA*/
-        if (multi == true ) {
-          result = Number(primeirovalor) * Number(segundovalor)
+        if (multi == true && segundovalor != "" ) {
+          result = primeirovalor * segundovalor
           armazenaprimeiro = primeirovalor
           armazenasegundo = segundovalor
           primeirovalor = result
@@ -147,6 +148,7 @@ function multiplicar(clicked_id){
           soma = false
           multi = true
         }
+        this.verificazero()
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
           armazenaprimeiro = primeirovalor
@@ -180,7 +182,7 @@ function subtrair(clicked_id){
         soma = false
         subtrai = true
         /*REALIZA A CONTA*/
-        if (subtrai == true ) {
+        if (subtrai == true && segundovalor != ""  ) {
           result = primeirovalor - segundovalor
           armazenaprimeiro = primeirovalor
           armazenasegundo = segundovalor
@@ -213,6 +215,7 @@ function subtrair(clicked_id){
           soma = false
           subtrai = true
         }
+        this.verificazero()
         if (dividi == true && soma == false && subtrai == false && multi == false) {
           result = primeirovalor / segundovalor
           armazenaprimeiro = primeirovalor
@@ -245,26 +248,10 @@ function dividir(clicked_id){
         subtrai = false
         soma = false
         dividi = true
+        /*VERIFICA SE A DIVISÃO É POR ZERO*/
+        this.verificazero()
         /*REALIZA A CONTA*/
-        if ( primeirovalor == 0 ){
-          alert('Não há divisão por zero')
-          primeirovalor = ""
-          segundovalor = ""
-          result = ""
-          divresult.innerHTML = ""
-          operacao = false
-          dividi = false
-        }
-        if ( segundovalor != "" && segundovalor == 0 ){
-          alert('Não há divisão por zero')
-          primeirovalor = ""
-          segundovalor = ""
-          result = ""
-          divresult.innerHTML = ""
-          operacao = false
-          dividi = false
-        }
-        if (dividi == true ) {
+        if (dividi == true && segundovalor != ""  ) {
           result = Number(primeirovalor) / Number(segundovalor)
           armazenaprimeiro = primeirovalor
           armazenasegundo = segundovalor
@@ -333,6 +320,33 @@ function resultado(clicked_id){
     divresult.innerHTML = result  
   }
 }
+/*ZERA TODOS OS PARAMETROS*/
+function zerar(){
+  armazenaprimeiro = ""
+  armazenasegundo = ""
+  primeirovalor = ""
+  segundovalor = ""
+  result = ""
+  divresult.innerHTML = ""
+  operacao = false
+  dividi = false
+  multi = false
+  subtrai = false
+  soma = false
+}
+/*VERIFICA SE DIVISÃO É POR ZERO*/
+function verificazero(){
+  if ( primeirovalor != "" && primeirovalor == 0 ){
+    alert('Não há divisão por zero')
+    zerar()
+    return false
+  }  
+  if ( segundovalor != "" && segundovalor == 0 ){
+    alert('Não há divisão por zero')
+    zerar()
+    return false
+  }
+}
 /*CHAMA O RESULTADO E O HISTORICO*/
 function igual(){
   this.resultado()
@@ -341,7 +355,7 @@ function igual(){
     armazenasegundo = ""
     hresult = ""
   }else{
-  this.armazena()
+    this.armazena()
   }
   operacao = false
   soma = false
@@ -374,16 +388,10 @@ function armazena(){
     hoperacao = "&divide"
   }
   hresult = result
-    
   if ( result != "" ) {
     historico.innerHTML += armazenaprimeiro + "    " + "    " + hoperacao + "    " + armazenasegundo + "  =  " + hresult + "<br>"
     hoperacao = ""
     armazenaprimeiro = result
     hsegundovalor = ""
   }
-  console.log(soma)
-  console.log(multi)
-  console.log(subtrai)
-  console.log(dividi)
-
 }
