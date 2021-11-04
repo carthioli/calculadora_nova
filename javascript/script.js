@@ -238,6 +238,7 @@ function dividir(clicked_id){
   divresult = document.getElementById("resultado")
   /*VERFICA SE JÁ EXISTE OUTRA OPERAÇÃO NO VISOR*/
   if ( primeirovalor != "" ) {
+    this.verificazero()
     if ( operacao == false ){
       divresult.innerHTML += clicked_id
       operacao = true
@@ -290,10 +291,10 @@ function dividir(clicked_id){
           armazenasegundo = segundovalor
           primeirovalor = result
           segundovalor = ""
+          this.verificazero()
           this.armazena()
           divresult.innerHTML = result + clicked_id
           subtrai = false
-          dividi = true
         }
       }
     }
@@ -336,7 +337,7 @@ function zerar(){
 }
 /*VERIFICA SE DIVISÃO É POR ZERO*/
 function verificazero(){
-  if ( primeirovalor != "" && primeirovalor == 0 ){
+  if ( !primeirovalor && primeirovalor == 0 ){
     alert('Não há divisão por zero')
     zerar()
     return false
@@ -350,6 +351,7 @@ function verificazero(){
 /*CHAMA O RESULTADO E O HISTORICO*/
 function igual(){
   this.resultado()
+  this.verificazero()
   if (armazenaprimeiro != "" && armazenasegundo != "" && hresult != ""){
     armazenaprimeiro = ""
     armazenasegundo = ""
